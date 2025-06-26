@@ -69,6 +69,13 @@ class CommentController extends Controller
         // Update data comment
         $comment->update($validatedData);
 
+        // get user data
+        $comment->load([
+            'user' => function ($query) {
+                $query->select('id', 'name', 'avatar');
+            }
+        ]);
+
         // return response JSON
         return response()->json([
             'data' => $comment,
@@ -82,6 +89,11 @@ class CommentController extends Controller
         // Hapus report terkait komentar ini
         Report::where('category', 'comment')
             ->where('refers_id', $comment->id)
+            ->delete();
+
+        // Hapus Notification terkait komentar ini
+        Notification::where('category', 'comment')
+            ->where('comment_id', $comment->id)
             ->delete();
 
         // Hapus data comment

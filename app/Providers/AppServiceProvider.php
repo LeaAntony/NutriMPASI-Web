@@ -3,10 +3,14 @@
 namespace App\Providers;
 
 use App\Models\Baby;
+use App\Models\Notification;
 use App\Observers\BabyObserver;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Blade;
+use App\Observers\NotificationObserver;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +32,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Baby::observe(BabyObserver::class);
+        Notification::observe(NotificationObserver::class);
+
+        // for load testing
+        // RateLimiter::for('api', function () {
+        //     return Limit::none();
+        // });
 
         // Add custom Blade directive for radial gradient if needed
         Blade::directive('radialGradient', function ($expression) {
