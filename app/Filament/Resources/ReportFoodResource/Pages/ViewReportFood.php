@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Filament\Resources\Pages\ViewRecord;
 use App\Filament\Resources\ReportFoodResource;
 use Filament\Notifications\Notification as FilamentNotification;
-use App\Filament\Resources\ReportFoodResource\RelationManagers\ReportFoodRelationManager;
+use App\Filament\Resources\ReportFoodResource\RelationManagers\FoodReportRelationManager;
 
 class ViewReportFood extends ViewRecord
 {

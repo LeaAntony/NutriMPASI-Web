@@ -18,7 +18,7 @@ use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ReportFoodResource\Pages\ListReportFood;
 use App\Filament\Resources\ReportFoodResource\Pages\ViewReportFood;
-use App\Filament\Resources\ReportFoodResource\RelationManagers\ReportFoodRelationManager;
+use App\Filament\Resources\ReportFoodResource\RelationManagers\FoodReportRelationManager;
 
 class ReportFoodResource extends Resource
 {
@@ -128,7 +128,7 @@ class ReportFoodResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ReportFoodRelationManager::class
+            FoodReportRelationManager::class,
         ];
     }
 

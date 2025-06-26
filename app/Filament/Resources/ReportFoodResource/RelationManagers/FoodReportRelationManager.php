@@ -8,7 +8,7 @@ use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Resources\RelationManagers\RelationManager;
 
-class ReportFoodRelationManager extends RelationManager
+class FoodReportRelationManager extends RelationManager
 {
     protected static string $relationship = 'reports';
 

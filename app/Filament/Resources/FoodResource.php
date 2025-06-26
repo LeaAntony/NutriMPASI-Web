@@ -253,7 +253,8 @@ class FoodResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // Fix the incorrect namespace reference
+            \App\Filament\Resources\ReportFoodResource\RelationManagers\FoodReportRelationManager::class,
         ];
     }
 
